@@ -24,16 +24,10 @@ import androidx.annotation.RequiresApi
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 const val gsmBitmask = (NETWORK_TYPE_BITMASK_GSM
         or NETWORK_TYPE_BITMASK_GPRS
-        or NETWORK_TYPE_BITMASK_EDGE
-        or NETWORK_TYPE_BITMASK_CDMA
-        or NETWORK_TYPE_BITMASK_1xRTT)
+        or NETWORK_TYPE_BITMASK_EDGE)
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-const val wcdmaBitmask = (NETWORK_TYPE_BITMASK_EVDO_0
-        or NETWORK_TYPE_BITMASK_EVDO_A
-        or NETWORK_TYPE_BITMASK_EVDO_B
-        or NETWORK_TYPE_BITMASK_EHRPD
-        or NETWORK_TYPE_BITMASK_HSUPA
+const val wcdmaBitmask = (NETWORK_TYPE_BITMASK_HSUPA
         or NETWORK_TYPE_BITMASK_HSDPA
         or NETWORK_TYPE_BITMASK_HSPA
         or NETWORK_TYPE_BITMASK_HSPAP
@@ -42,14 +36,15 @@ const val wcdmaBitmask = (NETWORK_TYPE_BITMASK_EVDO_0
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 const val lteBitmask = (NETWORK_TYPE_BITMASK_LTE
-        or NETWORK_TYPE_BITMASK_LTE_CA
-        or NETWORK_TYPE_BITMASK_IWLAN)
+        or NETWORK_TYPE_BITMASK_LTE_CA)
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 var networkTypes = listOf(
     NetworkType("2G", gsmBitmask),
     NetworkType("3G", wcdmaBitmask),
-    NetworkType("LTE", lteBitmask)
+    NetworkType("LTE", lteBitmask),
+    NetworkType("2G/3G", gsmBitmask or wcdmaBitmask),
+    NetworkType("2G/3G/LTE", gsmBitmask or wcdmaBitmask or lteBitmask)
 )
 
 data class NetworkType(
