@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "306212680080",
+    "project_id": "networkmodechanger",
+    "storage_bucket": "networkmodechanger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306212680080:android:9e86723507c80abf910315",
+        "android_client_info": {
+          "package_name": "com.gv.networkmodechanger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "306212680080-cki1h190u6h22gmp3bmpd47bnb3sbo4i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4ObjwGG9PkPDesZRJvavDHbIrbx6OE6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "306212680080-cki1h190u6h22gmp3bmpd47bnb3sbo4i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
