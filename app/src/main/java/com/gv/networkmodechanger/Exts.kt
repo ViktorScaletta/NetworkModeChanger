@@ -1,32 +1,25 @@
 package com.gv.networkmodechanger
 
 import android.os.Build
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_1xRTT
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_CDMA
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_EDGE
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_EHRPD
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_EVDO_0
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_EVDO_A
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_EVDO_B
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_GPRS
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_GSM
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_HSDPA
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_HSPA
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_HSPAP
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_HSUPA
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_IWLAN
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_LTE
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_LTE_CA
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_TD_SCDMA
-import android.telephony.TelephonyManager.NETWORK_TYPE_BITMASK_UMTS
+import android.telephony.TelephonyManager
 import androidx.annotation.RequiresApi
 
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+const val NETWORK_TYPE_BITMASK_GSM = (1 shl 16 - 1).toLong()
+const val NETWORK_TYPE_BITMASK_GPRS = (1 shl 1 - 1).toLong()
+const val NETWORK_TYPE_BITMASK_EDGE = (1 shl 2 - 1).toLong()
+const val NETWORK_TYPE_BITMASK_HSUPA = (1 shl 9 - 1).toLong()
+const val NETWORK_TYPE_BITMASK_HSDPA = (1 shl 8 - 1).toLong()
+const val NETWORK_TYPE_BITMASK_HSPA = (1 shl 10 - 1).toLong()
+const val NETWORK_TYPE_BITMASK_HSPAP = (1 shl 15 - 1).toLong()
+const val NETWORK_TYPE_BITMASK_UMTS = (1 shl 3 - 1).toLong()
+const val NETWORK_TYPE_BITMASK_TD_SCDMA = (1 shl 17 - 1).toLong()
+const val  NETWORK_TYPE_BITMASK_LTE = (1 shl (13 - 1)).toLong()
+const val NETWORK_TYPE_BITMASK_LTE_CA = (1 shl 19 - 1).toLong()
+
 const val gsmBitmask = (NETWORK_TYPE_BITMASK_GSM
         or NETWORK_TYPE_BITMASK_GPRS
         or NETWORK_TYPE_BITMASK_EDGE)
 
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 const val wcdmaBitmask = (NETWORK_TYPE_BITMASK_HSUPA
         or NETWORK_TYPE_BITMASK_HSDPA
         or NETWORK_TYPE_BITMASK_HSPA
@@ -34,11 +27,9 @@ const val wcdmaBitmask = (NETWORK_TYPE_BITMASK_HSUPA
         or NETWORK_TYPE_BITMASK_UMTS
         or NETWORK_TYPE_BITMASK_TD_SCDMA)
 
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 const val lteBitmask = (NETWORK_TYPE_BITMASK_LTE
         or NETWORK_TYPE_BITMASK_LTE_CA)
 
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 var networkTypes = listOf(
     NetworkType("2G", gsmBitmask),
     NetworkType("3G", wcdmaBitmask),

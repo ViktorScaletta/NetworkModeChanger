@@ -1,6 +1,5 @@
 package com.gv.networkmodechanger
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
@@ -9,17 +8,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.gv.networkmodechanger.ui.theme.NetworkModeChangerTheme
 
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class MainActivity : ComponentActivity() {
 
     private val telephonyManager by lazy {
@@ -41,7 +36,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@SuppressLint("NewApi")
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
 fun NetworkTypeButton(
     networkType: NetworkType,
@@ -50,6 +45,21 @@ fun NetworkTypeButton(
 ) {
     Button(
         onClick = {
+            /*val getITelephonyMethod = telephonyManager.javaClass.getDeclaredMethod("getITelephony")
+            getITelephonyMethod.isAccessible = true
+            val telephonyService = getITelephonyMethod.invoke(telephonyManager)
+            *//*val getSubIdMethod =
+                telephonyManager.javaClass.getDeclaredMethod("getSubId")
+            val subId = getSubIdMethod.invoke(telephonyManager) as Int*//*
+            val setAllowedNetworkTypesForReasonMethod =
+                telephonyService.javaClass.getDeclaredMethod("setAllowedNetworkTypesForReason")
+            setAllowedNetworkTypesForReasonMethod.invoke(
+                telephonyManager,
+                0,
+                0,
+                networkType.value
+            )
+*/
             telephonyManager.setAllowedNetworkTypesForReason(
                 TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER,
                 networkType.value
