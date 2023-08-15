@@ -45,7 +45,10 @@ fun NetworkTypeButton(
 ) {
     Button(
         onClick = {
-
+            setNetworkType(
+                telephonyManager = telephonyManager,
+                networkType = networkType
+            )
         },
         modifier = modifier
     ) {
@@ -79,13 +82,12 @@ private fun setNetworkType(
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @SuppressLint("SoonBlockedPrivateApi")
 private fun setNetworkTypeForAndroid13(
     telephonyManager: TelephonyManager,
     networkType: NetworkType
 ) {
-    /*val getITelephonyMethod = telephonyManager.javaClass.getDeclaredMethod("getITelephony")
+    val getITelephonyMethod = telephonyManager.javaClass.getDeclaredMethod("getITelephony")
     getITelephonyMethod.isAccessible = true
     val telephonyService = getITelephonyMethod.invoke(telephonyManager)
     val getSubIdMethod =
@@ -102,10 +104,6 @@ private fun setNetworkTypeForAndroid13(
         telephonyService,
         subId,
         0,
-        networkType.value
-    )*/
-    telephonyManager.setAllowedNetworkTypesForReason(
-        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER,
         networkType.value
     )
 }
