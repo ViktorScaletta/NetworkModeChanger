@@ -1,6 +1,7 @@
 package com.gv.networkmodechanger
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
@@ -12,8 +13,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCompositionContext
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.content.getSystemService
 import com.gv.networkmodechanger.ui.theme.NetworkModeChangerTheme
 
 class MainActivity : ComponentActivity() {
@@ -60,7 +63,15 @@ fun NetworkTypeButton(
 @Composable
 fun NetworkTypeButtonsPreview() {
     NetworkModeChangerTheme {
-        //NetworkTypeButton(networkType = it, telephonyManager = telephonyManager)
+        // A surface container using the 'background' color from the theme
+        Column {
+            networkTypes.forEach {
+                NetworkTypeButton(
+                    networkType = it,
+                    telephonyManager = Activity().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+                )
+            }
+        }
     }
 }
 
